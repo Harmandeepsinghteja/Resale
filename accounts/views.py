@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from .forms import UserForm , UserProfileForm
+from .forms import UserForm , UserProfileForm,UserEditForm,ProfileEditForm
 from .models import user_profile
 from django.contrib.auth import authenticate, login
 from product.models import Product
@@ -35,32 +35,43 @@ def profile_detail(request):
     return render(request,'accounts/profile.html',{'profile': profile,  'ad_list':ad_list})
 
 
-# def profile_edit(request):
-#     profile = Profile.objects.get(user=request.user)
-#     if request.method=='POST':
-#         userform = UserEditForm(request.POST , instance=request.user)
-#         profileform = ProfileEditForm(request.POST , instance=profile)
+def profile_ad_detail(request):
+    # profile = user_profile.objects.get(user=request.user)
+    ad_list = Product.objects.filter(owner = request.user)
+    
+    
+    
+    return render(request,'accounts/profile_ad.html',{'ad_list':ad_list})
+
+
+
+def profile_edit(request):
+    profile = user_profile.objects.get(user=request.user)
+    if request.method=='POST':
+        userform = UserEditForm(request.POST , instance=request.user)
+        profileform = ProfileEditForm(request.POST , instance=profile)
         
-#         if userform.is_valid() and profileform.is_valid():
-#             userform.save()
-#             myform = profileform.save(commit=False)
-#             myform.user = request.user
-#             myform.save()
+        if userform.is_valid() and profileform.is_valid():
+            userform.save()
+            myform = profileform.save(commit=False)
+            myform.user = request.user
+            myform.save()
            
-#             return redirect('/accounts/profile')
+            return redirect('/accounts/profile')
 
-#     else:
-#         userform = UserEditForm(instance=request.user)
-#         profileform = ProfileEditForm(instance=profile)
+    else:
+        userform = UserEditForm(instance=request.user)
+        profileform = ProfileEditForm(instance=profile)
 
-#     return render(request,'accounts/edit_profile.html',{
-#         'userform' : userform,
-#         'edit_profile' : profileform
-#     })
+    return render(request,'accounts/edit_profile.html',{
+        'userform' : userform,
+        'edit_profile' : profileform
+    })
+
 
 def product_delete(request , pk):
     product = get_object_or_404(Product , pk = pk)
-
+    
     if request.method== 'POST':
         product.delete()
         return redirect('/')

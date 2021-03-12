@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'product',
     'home',
     'bootstrap4',
-    'ad'
+    'ad',
+    'hitcount'
 ]
 
 MIDDLEWARE = [

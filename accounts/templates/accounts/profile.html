@@ -1,52 +1,56 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
 
 {% block body %}
 
 <!-- Submit Ad -->
+
+<div class="navigation-agileits">
+    <div class="container">
+        <nav class="navbar-profile navbar-default-profile">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header nav_2">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div> 
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav-profile">
+                                
+                                <!-- Mega Menu -->
+                             
+                                <li><a href="{% url 'accounts:profile_ad' %}">Your Ads</a></li>
+                                <li><a href="{% url 'accounts:profile_edit' %}">Change Profile</a></li>
+                                <li><a href="contact.html"></a></li>
+                            </ul>
+                        </div>
+                        </nav>
+        </div>
+    </div>
+
+
 <div class="submit-ad main-grid-border">
     <div class="container">
-        <h2 class="head">Your Profile</h2>
-        <div class="post-ad-form">
-            <!-- <h3>{{profile}}</h3> -->
+        <h2 class="head">Welcome {{user}} </h2>
+        <!-- <div class="post-ad-form">
+            <h3>{{profile}}</h3>
             <div>
                 
             </div>
-        </div>
+        </div> -->
+        
+        {% block body_ad %}
+        {% endblock body_ad %}
+       
     
-        <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-            <div>
-                                 <div id="container">
-
-                 <div class="clearfix"></div>
-             <ul class="list">
-                 
-                 {% for product in ad_list %}
-                     <a href="{% url 'products:product_detail' product.slug %}">
-                         <li>
-                         <img src="{{product.image.url}}" title="" alt="" />
-                         <section class="list-left">
-                         <h5 class="title">{{product.name}}</h5>
-                         <span class="adprice">₹ {{product.price}}</span>
-                         <p class="catpath">Mobile Phones » {{product.brand}}</p>
-                         </section>
-                         <section class="list-right">
-                         <span class="date">Date, {{product.created}}</span>
-                         
-                         
-                         <form action="{% url 'accounts:product_delete' product.id %}" method="post">
-                            {% csrf_token %}
-                            <input type="submit" value="Delete">
-                        </form> 
-                        </section>
-                         
-                         <div class="clearfix"></div>
-                         </li> 
-                     </a>
-                 {% endfor %}
-             </ul>
-         </div>
-             </div>
-         </div>
+          
+    
+        
     </div>
 </div>
 </div>

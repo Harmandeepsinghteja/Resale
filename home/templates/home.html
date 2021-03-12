@@ -4,9 +4,15 @@
 	
 
 <body>
+
+	
+
+
+
+
 		<!-- content-starts-here -->
 		<div class="content">
-			<div class="categories">
+			<div class="categories_new">
 				<div class="container">
 					<div class="trend-ads">
 						<h2>Browse By Categories</h2>
@@ -15,7 +21,7 @@
 					{% for category in all_category %}
 												
 					<div class="col-md-2 focus-grid">
-						<a href="{% url 'product:product_list_category' category.slug %}">
+						<a href="{% url 'product:product_list_category' category.slug  %}">
 							<div class="focus-border">
 								<div class="focus-layout">
 									<div class="focus-image"> <img src="{{category.image.url}}" /></div>
@@ -30,6 +36,45 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
+
+			<div class="content">
+				<div class="categories_new">
+					<div class="container">
+						<div class="trend-ads">
+							<h2>Browse By Department</h2>
+						</div>
+						
+						{% for department in all_department %}
+													
+						<div class="col-md-2 focus-grid">
+							<a href="{% url 'product:product_list_department' department.slug  %}">
+								<div class="focus-border">
+									<div class="focus-layout">
+										<!-- <div class="focus-image"> <img src="{{category.image.url}}" /></div> -->
+										<h4 class="clrchg">{{department}}</h4>
+									</div>
+								</div>
+							</a>
+						</div>
+	
+						{% endfor %}
+	
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="trending-ads">
 				<div class="container">
 				<!-- slider -->
@@ -44,7 +89,7 @@
 					</div>
 					<div class="col-md-7 app-right">
 						<h3>Resale App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor Sed bibendum varius euismod. Integer eget turpis sit amet lorem rutrum ullamcorper sed sed dui. vestibulum odio at elementum. Suspendisse et condimentum nibh.</p>
+						<p>                                                                                                                                                                                </p>
 						<div class="app-buttons">
 							<div class="app-button">
 								<a href="#"><img src="images/1.png" alt=""></a>
@@ -59,6 +104,84 @@
 				</div>
 			</div>
 		</div>
+
+
+		<!--//brands-->
+<!-- new -->
+	<div class="newproducts-w3agile">
+		<div class="container">
+			
+			<h3>Recently Added</h3>
+				<div class="agile_top_brands_grids">
+					
+					{% for product in latest_products%}
+					<div class="col-md-3 top_brand_left-1">
+						<div class="hover14 column">
+							<div class="agile_top_brand_left_grid">
+								<div class="agile_top_brand_left_grid_pos">
+									<img src="{{product.image.url}}" alt=" " class="img-responsive">
+								</div>
+								<div class="agile_top_brand_left_grid1">
+									<figure>
+										<div class="snipcart-item block">
+											<div class="snipcart-thumb">
+												<a href="{% url 'products:product_detail' product.slug %}"><img title=" " alt=" " src="{{product.image.url}}"></a>		
+												<p> {{product.name}}    </p>
+												
+								
+												
+												<!-- <div class="stars">
+													<i  aria-hidden="true"></i>
+													<i  aria-hidden="true"></i>
+													<i  aria-hidden="true"></i>
+													<i  aria-hidden="true"></i>
+													<i class="fa fa-star " aria-hidden="true"></i>
+												</div> -->
+													<h4>{{product.price}} <span>{{product.original_price}}</span></h4>
+											</div>
+											<div class="snipcart-details top_brand_home_details">
+												<form action="{% url 'products:product_detail' product.slug %}" method="post">
+													{% csrf_token %}
+													<fieldset>
+														<!-- <input type="hidden" name="cmd" value="_cart">
+														<input type="hidden" name="add" value="1">
+														<input type="hidden" name="business" value=" ">
+														<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+														<input type="hidden" name="amount" value="35.99">
+														<input type="hidden" name="discount_amount" value="1.00">
+														<input type="hidden" name="currency_code" value="USD">
+														<input type="hidden" name="return" value=" ">
+														<input type="hidden" name="cancel_return" value=" "> -->
+														<input type="submit" name="submit" value="Details"   class="button">
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</figure>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					
+					
+					
+						<div class="clearfix"> </div>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
 		<!--footer section start-->		
 		<footer>
 			<div class="footer-top">
@@ -66,33 +189,33 @@
 					<div class="foo-grids">
 						<div class="col-md-3 footer-grid">
 							<h4 class="footer-head">Who We Are</h4>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-							<p>The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to using 'Content here.</p>
+							<!-- <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							<p>The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to using 'Content here.</p> -->
 						</div>
 						<div class="col-md-3 footer-grid">
 							<h4 class="footer-head">Help</h4>
 							<ul>
-								<li><a href="howitworks.html">How it Works</a></li>						
+								<!-- <li><a href="howitworks.html">How it Works</a></li>						
 								<li><a href="sitemap.html">Sitemap</a></li>
 								<li><a href="faq.html">Faq</a></li>
 								<li><a href="feedback.html">Feedback</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<li><a href="typography.html">Shortcodes</a></li>
+								<li><a href="typography.html">Shortcodes</a></li> -->
 							</ul>
 						</div>
 						<div class="col-md-3 footer-grid">
 							<h4 class="footer-head">Information</h4>
 							<ul>
-								<li><a href="regions.html">Locations Map</a></li>	
+								<!-- <li><a href="regions.html">Locations Map</a></li>	
 								<li><a href="terms.html">Terms of Use</a></li>
 								<li><a href="popular-search.html">Popular searches</a></li>	
-								<li><a href="privacy.html">Privacy Policy</a></li>	
+								<li><a href="privacy.html">Privacy Policy</a></li>	 -->
 							</ul>
 						</div>
 						<div class="col-md-3 footer-grid">
 							<h4 class="footer-head">Contact Us</h4>
 							<span class="hq">Our headquarters</span>
-							<address>
+							<!-- <address>
 								<ul class="location">
 									<li><span class="glyphicon glyphicon-map-marker"></span></li>
 									<li>CENTER FOR FINANCIAL ASSISTANCE TO DEPOSED NIGERIAN ROYALTY</li>
@@ -108,7 +231,7 @@
 									<li><a href="mailto:info@example.com">mail@example.com</a></li>
 									<div class="clearfix"></div>
 								</ul>						
-							</address>
+							</address> -->
 						</div>
 						<div class="clearfix"></div>
 					</div>						
