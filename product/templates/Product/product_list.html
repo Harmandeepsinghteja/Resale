@@ -62,42 +62,21 @@
 				
 				<div class="featured-ads">
 					<h2 class="sear-head fer">Featured Ads</h2>
+					{% for var in latest_products %}
 					<div class="featured-ad">
-						<a href="single.html">
+						<a href="{% url 'products:product_detail' var.slug %}">
 							<div class="featured-ad-left">
-								<img src="images/f1.jpg" title="ad image" alt="" />
+								<img src="{{ var.image.url }}" title="ad image" alt="" />
 							</div>
 							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>₹ 450</p>
+								<h4>{{ var.description|truncatechars:50 }}</h4>
+								<p>₹ {{ var.price  }}</p>
 							</div>
 							<div class="clearfix"></div>
 						</a>
 					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f2.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>₹ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f3.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>₹ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
+					{% endfor %}
+					
 					<div class="clearfix"></div>
 				</div>
 				</div>

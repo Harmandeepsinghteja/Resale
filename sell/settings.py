@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home',
     'bootstrap4',
     'ad',
+    'chat',
     'hitcount'
 ]
 
@@ -74,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sell.wsgi.application'
-
+ASGI_APPLICATION = 'sell.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

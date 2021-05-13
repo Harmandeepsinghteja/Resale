@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 class user_profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=12 ,  null=True,blank=False,unique=True)
+    phone_number = models.CharField(max_length=25 ,  null=True,blank=False,unique=True)
 
 
 

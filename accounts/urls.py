@@ -10,6 +10,7 @@ urlpatterns = [
     path('delete/<int:pk>/', views.product_delete, name='product_delete'),
     path('profile/ads',views.profile_ad_detail , name='profile_ad'),
     path('profile/edit',views.profile_edit , name='profile_edit'),
+    path('chat/', include('chat.urls' , namespace='accounts')),
     # path('password_change/' , auth_views.PasswordChangeView.as_view() , name='password_change') , 
     # path('password_change/done/' , auth_views.PasswordChangeDoneView.as_view() , name='password_change_done') , 
     # path('password_reset/' , auth_views.PasswordResetView.as_view() , name='password_reset') , 

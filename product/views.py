@@ -13,7 +13,7 @@ def productlist(request , category_slug=None ,department_slug=None):
     department= None
     categorylist = Category.objects.annotate(total_products=Count('product'))
     departmentlist = Department.objects.annotate(total_products=Count('product'))
-    
+    latest_products = Product.objects.order_by("-created")[:3]
 
     if category_slug :
         category = get_object_or_404(Category ,slug=category_slug)
@@ -39,7 +39,7 @@ def productlist(request , category_slug=None ,department_slug=None):
     productlist = paginator.get_page(page)
     template = 'Product/product_list.html'
 
-    context = {'product_list' : productlist , 'category_list' : categorylist ,'category' : category , 'departmentlist' : departmentlist ,'department' : department}
+    context = {'product_list' : productlist , 'category_list' : categorylist ,'category' : category , 'departmentlist' : departmentlist ,'department' : department, 'latest_products':latest_products}
     return render(request , template , context)
 
 # def productlist(request , category_slug=None , department_slug=None):

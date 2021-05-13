@@ -13,8 +13,8 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-
-            return redirect('/products')
+            return redirect('/accounts/login')
+        
 
     else:
         user_form = UserForm()

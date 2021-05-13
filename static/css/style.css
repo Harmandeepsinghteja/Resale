@@ -2450,6 +2450,10 @@ h2.sear-head.fer {
  * 15 May 2015
  */
 
+
+
+ 
+
 @mixin ellipsis(){
     max-width: 100%;
     overflow: hidden;
